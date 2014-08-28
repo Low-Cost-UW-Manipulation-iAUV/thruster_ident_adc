@@ -14,15 +14,16 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Declare a catkin package
 catkin_package(
-	 INCLUDE_DIRS include
+	 CATKIN_DEPENDS 
 	 roscpp
 	 controller_manager
 	 hardware_interface
+	 INCLUDE_DIRS
 	 )
 
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(test_robot src/test_robot.cpp)
-target_link_libraries(talker ${catkin_LIBRARIES})
-add_dependencies(talker std_msgs_generate_messages_cpp)
+target_link_libraries(test_robot ${catkin_LIBRARIES})
+add_dependencies(test_robot std_msgs_generate_messages_cpp)
