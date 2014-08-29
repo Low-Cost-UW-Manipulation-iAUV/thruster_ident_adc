@@ -39,9 +39,9 @@ namespace test_robot{
 
 			//connect and register the joint position interface
 			hardware_interface::JointHandle pos_handle_x(joint_state_interface.getHandle("x"), &cmd[0]);
-			jnt_pos_interface.registerHandle(pos_handle_x);
+			jnt_eff_interface.registerHandle(pos_handle_x);
 
-			registerInterface(&jnt_pos_interface);	
+			registerInterface(&jnt_eff_interface);	
 			state_x_position = 0;
 			state_x_velocity = 0;
 
@@ -50,8 +50,7 @@ namespace test_robot{
 		int write(ros::Publisher);
 
 	private:
-		hardware_interface::JointStateInterface jnt_state_interface;
-		hardware_interface::PositionJointInterface jnt_pos_interface;
+		hardware_interface::EffortJointInterface jnt_eff_interface;
 
 		hardware_interface::JointStateInterface joint_state_interface;
 
