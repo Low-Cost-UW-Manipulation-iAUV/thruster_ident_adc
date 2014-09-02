@@ -1,3 +1,7 @@
+/* Author: Raphael Nagel
+	Desc: ros_control_interface for testing purpose of the ros_control_iso controller
+	Date: 02/Sept/2014
+*/
 #include <controller_manager/controller_manager.h>
 #include <hardware_interface/joint_command_interface.h>
 #include <hardware_interface/joint_state_interface.h>
