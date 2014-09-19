@@ -1,29 +1,36 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(test_robot)
+project(thruster_ident)
 
 ## Find catkin and any catkin packages
 find_package(catkin REQUIRED COMPONENTS 
 	roscpp
 	rospy
 	std_msgs
-	genmsg
-	controller_manager
-	hardware_interface )
+	message_generation
+	)
 
+add_message_files(
+	DIRECTORY msg 
+	FILES
+	thrust_force.msg
+	)
+
+generate_messages(
+	DEPENDENCIES
+	std_msgs
+	)
 
 
 ## Declare a catkin package
 catkin_package(
 	 CATKIN_DEPENDS 
 	 roscpp
-	 controller_manager
-	 hardware_interface
 	 INCLUDE_DIRS
 	 )
 
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(test_robot src/test_robot.cpp)
-target_link_libraries(test_robot ${catkin_LIBRARIES})
-add_dependencies(test_robot std_msgs_generate_messages_cpp)
+add_executable(ident_me src/ident_me.cpp)
+target_link_libraries(ident_me ${catkin_LIBRARIES})
+add_dependencies(ident_me thruster_ident_generate_messages_cpp)
