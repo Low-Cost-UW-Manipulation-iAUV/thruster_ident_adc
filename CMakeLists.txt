@@ -9,11 +9,6 @@ find_package(catkin REQUIRED COMPONENTS
 	message_generation
 	)
 
-add_message_files(
-	DIRECTORY msg 
-	FILES
-	thrust_force.msg
-	)
 
 generate_messages(
 	DEPENDENCIES
@@ -33,4 +28,4 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(ident_me src/ident_me.cpp)
 target_link_libraries(ident_me ${catkin_LIBRARIES})
-add_dependencies(ident_me thruster_ident_generate_messages_cpp)
+add_dependencies(ident_me geometry_msgs_generate_messages_cpp)

@@ -9,7 +9,7 @@
 #include <fstream>	
 #include <stdio.h>
 #include <time.h>
-#include "thruster_ident/thrust_force.h"	
+#include "geometry_msgs/Vector3.h"	
 
 #include "thruster_ident/ident_me.hpp"
 
@@ -18,7 +18,7 @@ namespace iso_ros_control{
 
 
 		///Advertise the status topic
-		shoutout = nh_.advertise<thruster_ident::thrust_force>("thruster_ident_force", 50);
+		shoutout = nh_.advertise<geometry_msgs::Vector3>("thruster_ident_force", 50);
 		
 
 		/// Get the required variables from the parameter server and set standard values if not available
@@ -47,6 +47,7 @@ namespace iso_ros_control{
 		read();
 
 		publish();
+		sequence++;
 	}
 
 	/** Read(): testing - increment the joint state
@@ -76,11 +77,11 @@ namespace iso_ros_control{
 	*/
 	int read_and_publish::publish(){
 
-		thruster_ident::thrust_force msg;
-		msg.header.seq = sequence;
-		msg.header.stamp = ros::Time::now();
+		geometry_msgs::Vector3 msg;
+		msg.y = sequence;
+//		msg.header.stamp = ros::Time::now();
 
-		msg.data = data;
+		msg.x = data;
 
 
 		shoutout.publish(msg);
