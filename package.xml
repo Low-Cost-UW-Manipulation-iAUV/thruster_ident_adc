@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>thruster_ident</name>
+  <name>thruster_ident_adc</name>
   <version>0.1.0</version>
-  <description>The beginner_tutorials package</description>
+  <description>read and pub the adc value from BBB</description>
 
   <maintainer email="you@yourdomain.tld">Your Name</maintainer>
   <license>BSD</license>

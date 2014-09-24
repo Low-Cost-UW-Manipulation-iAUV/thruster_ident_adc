@@ -11,14 +11,14 @@
 #include <time.h>
 #include "geometry_msgs/Vector3.h"	
 
-#include "thruster_ident/ident_me.hpp"
+#include "thruster_ident_adc/ident_me.hpp"
 
 namespace iso_ros_control{
 	read_and_publish::read_and_publish(){
 
 
 		///Advertise the status topic
-		shoutout = nh_.advertise<geometry_msgs::Vector3>("thruster_ident_force", 50);
+		shoutout = nh_.advertise<geometry_msgs::Vector3>("thruster_ident_adc", 50);
 		
 
 		/// Get the required variables from the parameter server and set standard values if not available
@@ -91,7 +91,7 @@ namespace iso_ros_control{
 
 
 int main(int argc, char **argv){
-	ros::init(argc, argv, "read_and_publish_thruster_force");
+	ros::init(argc, argv, "thruster_ident_adc");
 	ros::NodeHandle nh;
 
 	/// An Async spinner creates another thread which will handle the event of this node being executed.
@@ -100,7 +100,7 @@ int main(int argc, char **argv){
 	iso_ros_control::read_and_publish robot;
 	ros::spin();
 
-	ROS_INFO("test_robot: Shutting down hardware interface");
+	ROS_INFO("thruster_ident_adc: Shutting down hardware interface");
 
 }
 
