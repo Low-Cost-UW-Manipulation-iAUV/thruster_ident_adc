@@ -1,5 +1,8 @@
-iso_test_hardware_interface
+thruster_ident_adc
 ===========================
-This is a hardware interface for testing a ros_control effort interface controller.
+Reads the ADC value from the BBB and publishes it.
+It requires you to run the following beforehand:
 
-It does nothing other than publish messages when updating
+<code>
+echo "echo cape-bone-iio > /sys/devices/bone_capemgr.9/slots" | sudo sh
+</code>
