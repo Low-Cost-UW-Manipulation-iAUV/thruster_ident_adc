@@ -24,7 +24,7 @@ namespace iso_ros_control{
 		/// Get the required variables from the parameter server and set standard values if not available
 		if (!nh_.getParam("/ros_control_iso/thruster_identification_bbb/pub_rate/", loop_hz_)){
 			  
-			ROS_ERROR("test_robot: Could not find update rate, assuming 50. \n");
+			ROS_ERROR("thruster_ident_adc: Could not find update rate, assuming 50. \n");
 			loop_hz_ = 50;
 			nh_.setParam("/ros_control_iso/thruster_identification_bbb/pub_rate/", loop_hz_);
 		}		
