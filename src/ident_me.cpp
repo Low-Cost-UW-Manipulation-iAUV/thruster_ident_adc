@@ -13,8 +13,8 @@
 
 #include "thruster_ident_adc/ident_me.hpp"
 
-namespace iso_ros_control{
-	read_and_publish::read_and_publish(){
+namespace iso_ros_control {
+	read_and_publish::read_and_publish() {
 
 
 		///Advertise the status topic
@@ -22,7 +22,7 @@ namespace iso_ros_control{
 		
 
 		/// Get the required variables from the parameter server and set standard values if not available
-		if (!nh_.getParam("/ros_control_iso/thruster_identification_bbb/pub_rate/", loop_hz_)){
+		if (!nh_.getParam("/ros_control_iso/thruster_identification_bbb/pub_rate/", loop_hz_)) {
 			  
 			ROS_ERROR("thruster_ident_adc: Could not find update rate, assuming 50. \n");
 			loop_hz_ = 50;
@@ -36,12 +36,12 @@ namespace iso_ros_control{
 
 	}
 
-	read_and_publish::~read_and_publish(){
+	read_and_publish::~read_and_publish() {
 	}
 
 	/** Update(): read the current joint status, run the controller and update the actuator output
 	*/
-	void read_and_publish::update(const ros::TimerEvent& event){
+	void read_and_publish::update(const ros::TimerEvent& event) {
 
 		/// Read the current status
 		read();
@@ -53,13 +53,12 @@ namespace iso_ros_control{
 	/** Read(): testing - increment the joint state
 	*		For testing purpose we only increment the joint state. In real this would read relevant data from sensors or encoders.
 	*/
-	int read_and_publish::read(void){
+	int read_and_publish::read(void) {
 	 	
 	 	std::ifstream adc_file;
 	 	adc_file.open("/sys/devices/ocp.3/helper.12/AIN5");
 	   
-	   if( adc_file == NULL )
-	   {
+	   if( adc_file == NULL ) {
 	      ROS_ERROR("Error while opening the file.\n");
 	      exit(EXIT_FAILURE);
 	   }
@@ -75,14 +74,13 @@ namespace iso_ros_control{
 	/** Write(): testing - publish the control output
 	*		For testing purpose we only publish the output, in real this would change the PWMs of the motor, etc.
 	*/
-	int read_and_publish::publish(){
+	int read_and_publish::publish() {
 
 		geometry_msgs::Vector3 msg;
 		msg.y = sequence;
-//		msg.header.stamp = ros::Time::now();
+		//  msg.header.stamp = ros::Time::now();
 
 		msg.x = data;
-
 
 		shoutout.publish(msg);
 	}
@@ -90,7 +88,7 @@ namespace iso_ros_control{
 
 
 
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
 	ros::init(argc, argv, "thruster_ident_adc");
 	ros::NodeHandle nh;
 
@@ -103,17 +101,3 @@ int main(int argc, char **argv){
 	ROS_INFO("thruster_ident_adc: Shutting down hardware interface");
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

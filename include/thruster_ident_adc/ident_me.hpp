@@ -14,11 +14,9 @@
 #include <sstream>
 #include <stdio.h>
 
-namespace iso_ros_control
-{
+namespace iso_ros_control {
 
-	class read_and_publish
-	{
+	class read_and_publish {
 	public:
 		read_and_publish();
 		~read_and_publish();
@@ -40,8 +38,6 @@ namespace iso_ros_control
 		ros::Publisher shoutout;
 
 	};
-
-
 }
 
 #endif
