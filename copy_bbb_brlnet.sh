@@ -7,6 +7,7 @@ rsync -avzh CMakeLists.txt 						BBB_BRLNET:/home/ubuntu/uwesub_catkin_workspace
 rsync -avzh *.md								BBB_BRLNET:/home/ubuntu/uwesub_catkin_workspace/src/thruster_ident_adc/
 rsync -avzh *.xml								BBB_BRLNET:/home/ubuntu/uwesub_catkin_workspace/src/thruster_ident_adc/
 rsync -avzh ./msg/*.msg							BBB_BRLNET:/home/ubuntu/uwesub_catkin_workspace/src/thruster_ident_adc/msg/
+rsync -avzh ./launch/*.launch					BBB_BRLNET:/home/ubuntu/uwesub_catkin_workspace/src/thruster_ident_adc/launch/
 
 
 echo "All done, Good Success!"
