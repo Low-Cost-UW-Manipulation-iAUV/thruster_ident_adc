@@ -1,0 +1,3 @@
+<launch>
+    <node name="thruster_ident_adc" pkg="thruster_ident_adc" type="ident_me" output="screen"/>  
+</launch>
